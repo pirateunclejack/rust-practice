@@ -12,8 +12,8 @@ struct Article {
     paragraph: Vec<Paragraph>,
 }
 
-fn read_json_typed(raw_josn: &str) -> Article {
-    let parsed: Article = serde_json::from_str(raw_josn).unwrap();
+fn read_json_typed(raw_json: &str) -> Article {
+    let parsed: Article = serde_json::from_str(raw_json).unwrap();
     return parsed;
 }
 fn main() {
