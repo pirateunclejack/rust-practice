@@ -2,9 +2,6 @@ use reqwest::header::USER_AGENT;
 use reqwest::Error;
 use serde::Deserialize;
 
-// #[derive(Deserialize, Debug)]
-// struct allData(Vec<[User; 4]>);
-
 #[derive(Deserialize, Debug)]
 struct User {
     login: String,
