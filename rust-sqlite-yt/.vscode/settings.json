@@ -1,0 +1,11 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "name": "1",
+      "database": "${workspaceFolder:rust-sqlite-yt}/sqlite.db"
+    }
+  ],
+  "sqltools.useNodeRuntime": true
+}
