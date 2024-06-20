@@ -32,7 +32,7 @@ fn update_commit_push() {
     let push_command = Command::new("git")
         .arg("push")
         .arg("origin")
-        .arg("main")
+        .arg("git-automate-yt")
         .output()
         .expect("Failed to execute git push command.");
 
