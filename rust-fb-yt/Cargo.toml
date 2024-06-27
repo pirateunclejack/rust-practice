@@ -1,0 +1,10 @@
+[package]
+name = "rust-fb-yt"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+firebase-rs = "2.1.2"
+serde = "1.0.203"
+serde_json = "1.0.118"
+tokio = { version = "1.38.0", features = ["full"]}
