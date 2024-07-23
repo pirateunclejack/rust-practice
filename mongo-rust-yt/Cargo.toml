@@ -11,3 +11,13 @@ serde = {version = "1.0.204", features = ["derive"]}
 thiserror = "1.0.63"
 tokio = {version = "1.38.1", features = ["macros"]}
 warp = "0.3.7"
+
+
+[profile.dev]
+debug = 0
+
+[profile.test]
+debug = 0
+
+[profile.release]
+panic = 'abort'

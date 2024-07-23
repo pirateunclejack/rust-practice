@@ -13,10 +13,9 @@ mod handler;
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Book {
-    pub id: String,
     pub name: String,
     pub author: String,
-    pub numb_pages: usize,
+    pub num_pages: usize,
     pub added_at: DateTime<Utc>,
     pub tags: Vec<String>,
 }

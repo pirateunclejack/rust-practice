@@ -7,7 +7,7 @@ use warp::{http::StatusCode, reject, reply::json, Reply};
 pub struct BookRequest {
     pub name: String,
     pub author: String,
-    pub numb_pages: usize,
+    pub num_pages: usize,
     pub tags: Vec<String>,
 }
 
@@ -22,7 +22,9 @@ pub async fn create_book_handler(body: BookRequest, db: DB) -> WebResult<impl Re
 }
 
 pub async fn edit_book_handler(id: String, body: BookRequest, db: DB) -> WebResult<impl Reply> {
-    db.edit_book(&body).await.map_err(|e| reject::custom(e))?;
+    db.edit_book(&id, &body)
+        .await
+        .map_err(|e| reject::custom(e))?;
     Ok(StatusCode::OK)
 }
 
