@@ -1,0 +1,9 @@
+[package]
+name = "rust-warp-jwt-yt"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+serde = {version = "1.0.204", features = ["derive"]}
+tokio = "1.39.2"
+warp = "0.3.7"
