@@ -1,3 +1,4 @@
+use crate::auth::{with_auth, Role};
 use error::Error::*;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
@@ -31,7 +32,7 @@ type Result<T> = std::result::Result<T, error::Error>;
 type WebResult<T> = std::result::Result<T, Rejection>;
 type Users = Arc<HashMap<String, User>>;
 
-fn with_users(users: Users) -> impl Filter<Extract = (Users), Error = Infallible> + Clone {
+fn with_users(users: Users) -> impl Filter<Extract = (Users,), Error = Infallible> + Clone {
     warp::any().map(move || users.clone())
 }
 
@@ -40,7 +41,7 @@ pub async fn login_handler(users: Users, body: LoginRequest) -> WebResult<impl R
         .iter()
         .find(|(_uid, user)| user.email == body.email && user.pw == body.pw)
     {
-        some((uid, user)) => {
+        Some((uid, user)) => {
             let token = auth::create_jwt(&uid, &Role::from_str(&user.role))
                 .map_err(|e| reject::custom(e))?;
             Ok(reply::json(&LoginResponse { token }))
