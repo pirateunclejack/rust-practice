@@ -1,0 +1,17 @@
+[package]
+name = "tide-basic-crud"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+async-std = { version = "1.12.0", features = ["attributes", "tokio1"] }
+chrono = "0.4.38"
+dotenv = "0.15.0"
+oauth2 = "4.4.2"
+serde = { version = "1.0.208", features = ["derive"] }
+sqlx = { version = "0.8.0", features = ["chrono", "json", "macros", "postgres", "runtime-async-std-rustls", "uuid"] }
+surf = "2.3.2"
+tera = "1.20.0"
+tide = "0.16.0"
+tide-tera = "0.2.4"
+uuid = { version = "1.10.0", features = ["serde", "v4"] }
