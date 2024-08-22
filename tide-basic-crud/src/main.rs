@@ -82,7 +82,7 @@ async fn server(db_pool: PgPool) -> Server<State> {
     // views
 
     app.at("/").get(views::index);
-    app.at("/dinos/new").get(views::new());
+    app.at("/dinos/new").get(views::new);
     app.at("/dinos/:id/edit").get(views::edit);
 
     // auth
