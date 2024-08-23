@@ -1,0 +1,9 @@
+[package]
+name = "resto-warp-yt"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rusqlite = "0.32.1"
+tokio = "1.39.3"
+warp = "0.3.7"
