@@ -40,7 +40,7 @@ fn create_order_item_table_if_not_exists(conn: &Connection) -> rusqlite::Result<
                 id INTEGER PRIMARY KEY,
                 order_id INTEGER NOT NULL,
                 menu_id INTEGER NOT NULL,
-                cooking_time NOT NULL,
+                cooking_time INTEGER NOT NULL,
                 quantity INTEGER NOT NULL default 1,
                 FOREIGN KEY (order_id) REFERENCES orders(id),
                 FOREIGN KEY (menu_id) REFERENCES menus(id))"#,
@@ -54,10 +54,12 @@ pub fn initialize_db() {
     let conn = get_db_conn();
     conn.execute("PRAGMA foreign_keys = ON", [])
         .expect("failed to enable foreign key support");
-    print!("create Table table");
+    println!("create Table table");
     create_table_table_if_not_exists(&conn).expect("failed to create Table table");
-    print!("create Menu table");
+    println!("create Menu table");
     create_menu_table_if_not_exists(&conn).expect("failed to create Menu table");
-    print!("create Order table");
+    println!("create Order table");
     create_order_table_if_not_exists(&conn).expect("failed to create Order table");
+    println!("Creating OrderItem table");
+    create_order_item_table_if_not_exists(&conn).expect("Failed to create Table order_items");
 }
