@@ -1,0 +1,15 @@
+[package]
+name = "rwebapi"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+iron = "0.6.1"
+router = "0.6.0"
+logger = "0.4.0"
+env_logger = "0.11.5"
+serde = { version = "1.0.215", features = ["derive"] }
+serde_json = "*"
+# rustc-serialize = "*"
+chrono = { version = "0.4.38", features = ["serde"]}
+uuid = { version = "1.11.0", features = ["serde", "v4"]}
