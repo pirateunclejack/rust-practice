@@ -52,6 +52,7 @@ pub enum Unit {
     Pct,
 }
 
+#[derive(Clone)]
 pub struct Color {
     pub r: f32,
     pub g: f32,
