@@ -6,10 +6,10 @@ use crate::dom::{ElementData, Node, NodeType};
 
 type PropertyMap<'a> = HashMap<&'a str, &'a Value>;
 
-pub struct StyleNode<'a> {
+pub struct StyledNode<'a> {
     node: &'a Node,
     styles: PropertyMap<'a>,
-    pub children: Vec<StyleNode<'a>>,
+    pub children: Vec<StyledNode<'a>>,
 }
 
 pub enum Display {
@@ -19,21 +19,21 @@ pub enum Display {
     None,
 }
 
-impl<'a> StyleNode<'a> {
-    pub fn new(node: &'a Node, stylesheet: &'a Stylesheet) -> StyleNode<'a> {
+impl<'a> StyledNode<'a> {
+    pub fn new(node: &'a Node, stylesheet: &'a Stylesheet) -> StyledNode<'a> {
         let mut style_children = Vec::new();
 
         for child in &node.children {
             match child.node_type {
-                NodeType::Element(_) => style_children.push(StyleNode::new(&child, stylesheet)),
+                NodeType::Element(_) => style_children.push(StyledNode::new(&child, stylesheet)),
                 _ => {}
             }
         }
 
-        StyleNode {
+        StyledNode {
             node,
             styles: match node.node_type {
-                NodeType::Element(ref e) => StyleNode::get_styles(e, stylesheet),
+                NodeType::Element(ref e) => StyledNode::get_styles(e, stylesheet),
                 _ => PropertyMap::new(),
             },
             children: style_children,
@@ -86,7 +86,7 @@ impl<'a> StyleNode<'a> {
     }
 }
 
-impl<'a> fmt::Debug for StyleNode<'a> {
+impl<'a> fmt::Debug for StyledNode<'a> {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "{:?}: {:?}", self.node, self.styles)
     }
@@ -134,7 +134,7 @@ fn selector_matches(element: &ElementData, selector: &Selector) -> bool {
     false
 }
 
-pub fn pretty_print(node: &StyleNode, indent_size: usize) {
+pub fn pretty_print(node: &StyledNode, indent_size: usize) {
     let indent = (0..indent_size).map(|_| " ").collect::<String>();
     println!("{}{:?}", indent, node);
 
