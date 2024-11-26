@@ -1,5 +1,5 @@
-use core::{net, panic};
-use std::fmt::{self, Formatter};
+use core::panic;
+use std::fmt;
 
 use crate::css::{Unit, Value};
 use crate::style::{Display, StyledNode};
@@ -102,8 +102,8 @@ impl<'a> LayoutBox<'a> {
     }
 
     fn layout_block(&mut self, b_box: Dimensions) {
-        self.calculate_inline_width(b_box);
-        self.calculate_inline_position(b_box);
+        self.calculate_width(b_box);
+        self.calculate_position(b_box);
         self.layout_children();
         self.calculate_height();
     }
