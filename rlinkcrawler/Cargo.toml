@@ -1,0 +1,9 @@
+[package]
+name = "rlinkcrawler"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+hyper = "0.10.1"
+html5ever = "0.21.0"
+url = "0.2.37"
