@@ -1,0 +1,7 @@
+[package]
+name = "r_wasm_snake"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+stdweb = "0.4.7"
