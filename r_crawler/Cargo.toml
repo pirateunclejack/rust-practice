@@ -1,0 +1,10 @@
+[package]
+name = "r_crawler"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+async-std = "*"
+surf = "*"
+html5ever = "0.25.1"
+url = "*"
