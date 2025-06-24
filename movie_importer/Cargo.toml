@@ -1,0 +1,10 @@
+[package]
+name = "movie_importer"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+regex = "1.11.1"
+rfd = "0.15.3"
+serde = { version = "1.0.219", features = ["derive"] }
+serde_json = "1.0.140"
